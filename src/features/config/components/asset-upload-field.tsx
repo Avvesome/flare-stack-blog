@@ -14,6 +14,7 @@ interface AssetUploadFieldProps {
   accept: string;
   label: string;
   hint?: string;
+  placeholder?: string;
   readOnly?: boolean;
   error?: string;
 }
@@ -21,8 +22,11 @@ interface AssetUploadFieldProps {
 function getPreviewUrl(value: string): string | null {
   if (!value || typeof value !== "string") return null;
   const trimmed = value.trim();
-  if (!trimmed.startsWith("/")) return null;
-  return trimmed;
+  if (trimmed.startsWith("/")) return trimmed;
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    return trimmed;
+  }
+  return null;
 }
 
 export function AssetUploadField({
@@ -31,6 +35,7 @@ export function AssetUploadField({
   accept,
   label,
   hint,
+  placeholder,
   readOnly,
   error,
 }: AssetUploadFieldProps) {
@@ -89,7 +94,7 @@ export function AssetUploadField({
                 error && "border-destructive focus-visible:border-destructive",
                 readOnly && "border-dashed opacity-60 bg-muted/5",
               )}
-              placeholder={`/images/asset/${assetPath}`}
+              placeholder={placeholder ?? `/images/asset/${assetPath}`}
             />
             <input
               ref={fileInputRef}

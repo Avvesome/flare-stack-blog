@@ -44,18 +44,18 @@ export function DefaultThemeSettings() {
         name="site.theme.default.background.homeImage"
         assetPath="themes/default/home-image.webp"
         accept=".png,.webp,.jpg,.jpeg"
-        readOnly
         label={m.settings_site_field_home_image()}
         hint={m.settings_site_field_home_image_hint()}
+        placeholder="/images/asset/themes/default/home-image.webp or https://picsum.photos/1600/900"
         error={errors.site?.theme?.default?.background?.homeImage?.message}
       />
       <AssetUploadField
         name="site.theme.default.background.globalImage"
         assetPath="themes/default/global-image.webp"
         accept=".png,.webp,.jpg,.jpeg"
-        readOnly
         label={m.settings_site_field_global_image()}
         hint={m.settings_site_field_global_image_hint()}
+        placeholder="/images/asset/themes/default/global-image.webp or https://picsum.photos/1600/900"
         error={errors.site?.theme?.default?.background?.globalImage?.message}
       />
       <RangeField

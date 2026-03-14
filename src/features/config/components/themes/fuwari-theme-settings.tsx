@@ -90,9 +90,9 @@ export function FuwariThemeSettings() {
         name="site.theme.fuwari.homeBg"
         assetPath="themes/fuwari/home-bg.webp"
         accept=".png,.webp,.jpg,.jpeg"
-        readOnly
         label={m.settings_site_field_home_image()}
         hint={m.settings_site_field_home_image_hint()}
+        placeholder="/images/asset/themes/fuwari/home-bg.webp or https://picsum.photos/1600/900"
         error={errors.site?.theme?.fuwari?.homeBg?.message}
       />
       <AssetUploadField
