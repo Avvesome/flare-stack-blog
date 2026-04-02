@@ -10,21 +10,21 @@
   "keep_vars": true,
   "routes": [
     {
-      "pattern": "DOMAIN_PLACEHOLDER",
+      "pattern": "你的博客域名",
       "custom_domain": true
     }
   ],
   "d1_databases": [
     {
       "binding": "DB",
-      "database_id": "D1_DATABASE_ID",
+      "database_id": "89c1a113-fbfb-4276-a40d-83170bd0ffe9",
       "migrations_dir": "migrations",
       "remote": true
     }
   ],
   "r2_buckets": [
     {
-      "bucket_name": "bucket-name-placeholder",
+      "bucket_name": "long",
       "binding": "R2",
       "remote": true
     }
@@ -32,151 +32,13 @@
   "kv_namespaces": [
     {
       "binding": "KV",
-      "id": "KV_NAMESPACE_ID",
+      "id": "f92e29dff42c4ac3840d46141d8ae9d4",
       "remote": true
     },
     {
       "binding": "OAUTH_KV",
-      "id": "KV_NAMESPACE_ID",
+      "id": "f92e29dff42c4ac3840d46141d8ae9d4",
       "remote": true
     }
-  ],
-  "workflows": [
-    {
-      "name": "post-process-workflow",
-      "binding": "POST_PROCESS_WORKFLOW",
-      "class_name": "PostProcessWorkflow"
-    },
-    {
-      "name": "post-auto-snapshot-workflow",
-      "binding": "POST_AUTO_SNAPSHOT_WORKFLOW",
-      "class_name": "PostAutoSnapshotWorkflow"
-    },
-    {
-      "name": "comment-moderation-workflow",
-      "binding": "COMMENT_MODERATION_WORKFLOW",
-      "class_name": "CommentModerationWorkflow"
-    },
-    {
-      "name": "scheduled-publish-workflow",
-      "binding": "SCHEDULED_PUBLISH_WORKFLOW",
-      "class_name": "ScheduledPublishWorkflow"
-    },
-    {
-      "name": "export-workflow",
-      "binding": "EXPORT_WORKFLOW",
-      "class_name": "ExportWorkflow"
-    },
-    {
-      "name": "import-workflow",
-      "binding": "IMPORT_WORKFLOW",
-      "class_name": "ImportWorkflow"
-    }
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "RATE_LIMITER",
-        "class_name": "RateLimiter"
-      },
-      {
-        "name": "PASSWORD_HASHER",
-        "class_name": "PasswordHasher"
-      }
-    ]
-  },
-  "ai": {
-    "binding": "AI",
-    "remote": true
-  },
-  "queues": {
-    "producers": [{ "binding": "QUEUE", "queue": "blog-queue" }],
-    "consumers": [
-      {
-        "queue": "blog-queue",
-        "max_batch_size": 10,
-        "max_batch_timeout": 5,
-        "max_retries": 3
-      }
-    ]
-  },
-  "migrations": [
-    {
-      "tag": "rate-limiter-v1",
-      "new_sqlite_classes": ["RateLimiter"]
-    },
-    {
-      "tag": "password-hasher-v1",
-      "new_sqlite_classes": ["PasswordHasher"]
-    }
-  ],
-  "env": {
-    "test": {
-      "durable_objects": {
-        "bindings": [
-          {
-            "name": "RATE_LIMITER",
-            "class_name": "RateLimiter"
-          },
-          {
-            "name": "PASSWORD_HASHER",
-            "class_name": "PasswordHasher"
-          }
-        ]
-      },
-      "kv_namespaces": [
-        {
-          "binding": "KV"
-        },
-        {
-          "binding": "OAUTH_KV"
-        }
-      ],
-      "r2_buckets": [
-        {
-          "binding": "R2"
-        }
-      ],
-      "d1_databases": [
-        {
-          "binding": "DB"
-        }
-      ],
-      "workflows": [
-        {
-          "name": "post-process-workflow",
-          "binding": "POST_PROCESS_WORKFLOW",
-          "class_name": "PostProcessWorkflow"
-        },
-        {
-          "name": "post-auto-snapshot-workflow",
-          "binding": "POST_AUTO_SNAPSHOT_WORKFLOW",
-          "class_name": "PostAutoSnapshotWorkflow"
-        },
-        {
-          "name": "comment-moderation-workflow",
-          "binding": "COMMENT_MODERATION_WORKFLOW",
-          "class_name": "CommentModerationWorkflow"
-        },
-        {
-          "name": "scheduled-publish-workflow",
-          "binding": "SCHEDULED_PUBLISH_WORKFLOW",
-          "class_name": "ScheduledPublishWorkflow"
-        },
-        {
-          "name": "export-workflow",
-          "binding": "EXPORT_WORKFLOW",
-          "class_name": "ExportWorkflow"
-        },
-        {
-          "name": "import-workflow",
-          "binding": "IMPORT_WORKFLOW",
-          "class_name": "ImportWorkflow"
-        }
-      ],
-      "queues": {
-        "producers": [{ "binding": "QUEUE", "queue": "blog-queue" }]
-      }
-    }
-  }
+  ]
 }
